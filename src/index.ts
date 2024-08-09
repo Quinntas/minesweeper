@@ -290,8 +290,8 @@ export class GameManager {
 }
 
 const gameManager = new GameManager(baseConfig);
-const blocks = gameManager.getBoard().getBlocks()
 
+const blocks = gameManager.getBoard().getBlocks()
 for (let i = 0; i < blocks.length; i++) {
     process.stdout.write("\n");
     for (let j = 0; j < blocks[0].length; j++) {
@@ -309,5 +309,10 @@ for (let i = 0; i < blocks.length; i++) {
         }
     }
 }
+
+gameManager.revealBlock(0, 0);
+
+if (gameManager.getGameState() === GameState.LOST)
+    process.stdout.write("\nGame Over");
 
 process.stdout.write("\n");
